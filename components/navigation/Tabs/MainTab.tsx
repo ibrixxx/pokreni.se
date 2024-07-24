@@ -3,6 +3,7 @@ import { Tabs } from "expo-router";
 import { useTheme } from "@/hooks/useTheme";
 import { Colors } from "@/constants/Colors";
 import { TabBarIcon } from "@/components/icons/TabBarIcon";
+import { CustomMainTabLayout } from "./CustomMainTabLayout";
 
 const MainTab = () => {
   const { theme } = useTheme();
@@ -12,20 +13,12 @@ const MainTab = () => {
       screenOptions={{
         tabBarActiveTintColor: Colors[theme ?? "light"].tint,
         headerShown: false,
-        tabBarStyle: {
-          height: 90,
-          paddingHorizontal: 5,
-          paddingTop: 0,
-          backgroundColor: Colors[theme ?? "light"].background,
-          position: "absolute",
-          borderTopWidth: 0,
-        },
       }}
+      tabBar={(props) => <CustomMainTabLayout {...props} />}
     >
       <Tabs.Screen
         name="index"
         options={{
-          title: "Home",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "home" : "home-outline"}
@@ -35,9 +28,19 @@ const MainTab = () => {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="community"
         options={{
-          title: "Explore",
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "code-slash" : "code-slash-outline"}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "code-slash" : "code-slash-outline"}
