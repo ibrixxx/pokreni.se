@@ -1,7 +1,7 @@
 import React from "react";
 import { Tabs } from "expo-router";
 import { useTheme } from "@/hooks/useTheme";
-import { Colors } from "@/constants/Colors";
+import { ThemeColors } from "@/constants/Colors";
 import { TabBarIcon } from "@/components/icons/TabBarIcon";
 import { CustomMainTabLayout } from "./CustomMainTabLayout";
 
@@ -11,7 +11,7 @@ const MainTab = () => {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[theme ?? "light"].tint,
+        tabBarActiveTintColor: ThemeColors[theme ?? "light"].tabIconSelected,
         headerShown: false,
       }}
       tabBar={(props) => <CustomMainTabLayout {...props} />}

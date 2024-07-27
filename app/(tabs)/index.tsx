@@ -1,44 +1,30 @@
-import { HelloWave } from "@/components/animated/HelloWave";
-import ParallaxScrollView from "@/components/animated/ParallaxScrollView";
-import { ThemedText } from "@/components/themed/ThemedText";
+import { StyleSheet } from "react-native";
+import { Image } from "expo-image";
 import { ThemedView } from "@/components/themed/ThemedView";
-import { useTheme } from "@/hooks/useTheme";
-import { Image, StyleSheet, Switch } from "react-native";
+import TextDripsy from "@/components/themed/TextDripsy";
+import ViewDripsy from "@/components/themed/ViewDripsy";
 
 export default function HomeScreen() {
-  const { theme, setTheme } = useTheme();
-
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
-      headerImage={
-        <Image
-          source={require("@/assets/images/partial-react-logo.png")}
-          style={styles.reactLogo}
-        />
-      }
-    >
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Change the app theme</ThemedText>
-        <ThemedText>{theme + " theme"}</ThemedText>
-        <Switch
-          value={theme === "dark"}
-          onChange={() => setTheme(theme === "dark" ? "light" : "dark")}
-        />
-      </ThemedView>
-    </ParallaxScrollView>
+    <ViewDripsy style={styles.container}>
+      <Image
+        style={styles.image}
+        source="https://picsum.photos/seed/696/3000/2000"
+        contentFit="contain"
+        transition={200}
+      />
+      <TextDripsy variant="text.big" boxShadow={"md"}>
+        sdasd
+      </TextDripsy>
+    </ViewDripsy>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: "row",
+  container: {
+    flex: 1,
+    justifyContent: "center",
     alignItems: "center",
-    gap: 8,
   },
   stepContainer: {
     gap: 8,
@@ -50,5 +36,10 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     position: "absolute",
+  },
+  image: {
+    width: 200,
+    height: 200,
+    backgroundColor: "#0553",
   },
 });

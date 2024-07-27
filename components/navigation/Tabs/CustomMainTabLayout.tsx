@@ -15,7 +15,7 @@ import { ThemedView } from "@/components/themed/ThemedView";
 import { TabBarIcon } from "@/components/icons/TabBarIcon";
 import PlayAnimation from "@/assets/animations/play-animation.json";
 import { useTheme } from "@/hooks/useTheme";
-import { Colors } from "@/constants/Colors";
+import { ThemeColors } from "@/constants/Colors";
 import LottieView from "lottie-react-native";
 
 interface CustomTabBarProps {
@@ -37,7 +37,7 @@ export const CustomMainTabLayout = ({
     <ThemedView
       style={[
         styles.tabBar,
-        { backgroundColor: Colors[theme ?? "light"].tabBarBackground },
+        { backgroundColor: ThemeColors[theme ?? "light"].tabBarBackground },
       ]}
     >
       {state.routes.map((route, index) => {
