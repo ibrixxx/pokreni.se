@@ -1,18 +1,10 @@
 import { StyleSheet } from "react-native";
-import { Image } from "expo-image";
-import { ThemedView } from "@/components/themed/ThemedView";
 import TextDripsy from "@/components/themed/TextDripsy";
 import ViewDripsy from "@/components/themed/ViewDripsy";
 
 export default function HomeScreen() {
   return (
     <ViewDripsy style={styles.container}>
-      <Image
-        style={styles.image}
-        source="https://picsum.photos/seed/696/3000/2000"
-        contentFit="contain"
-        transition={200}
-      />
       <TextDripsy variant="text.big" boxShadow={"md"}>
         sdasd
       </TextDripsy>
