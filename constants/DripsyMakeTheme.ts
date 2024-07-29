@@ -44,9 +44,16 @@ export const theme = makeTheme({
     },
     big: {
       fontSize: "$6",
+      fontFamily: "SSFaster",
     },
     thick: {
-      fontWeight: "900",
+      fontFamily: "AntonRegular",
+      fontWeight: "condensedBold",
+    },
+    regular: {
+      fontFamily: "OswaldSemiBold",
+      fontSize: "$1",
+      lineHeight: "$1",
     },
   },
   shadows: {
@@ -70,6 +77,18 @@ export const theme = makeTheme({
   },
   linearGradients: {
     sunny: [Colors.yellow[5], Colors.purple[4]],
+  },
+  layout: {
+    mainContainer: {
+      px: "$2",
+      pt: "$3",
+      flex: 1,
+    },
+    mediaListItemDescription: {
+      p: "$4",
+      flex: 1,
+      justifyContent: "flex-end",
+    },
   },
 });
 
