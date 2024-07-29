@@ -1,104 +1,50 @@
-import { Dimensions, Pressable, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import ViewDripsy from "@/components/themed/ViewDripsy";
-import { Image, Row, Text, View } from "dripsy";
-import { Video, ResizeMode } from "expo-av";
-import React, { useRef } from "react";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import AntDesign from "@expo/vector-icons/AntDesign";
-import { Colors } from "@/constants/Colors";
-import LottieView from "lottie-react-native";
-import PlayingAnimation from "@/assets/animations/playing-animation.json";
+import React from "react";
 import SafeAreaViewDripsy from "@/components/themed/SafeAreaViewDripsy";
+import { FlashList } from "@shopify/flash-list";
+import MediaCardItem from "@/components/player/MediaCardItem";
+import { View } from "dripsy";
 
-const HAS_VIDEO = true;
+const FAKE_DATA = [
+  {
+    title: "ANE ASDNASD ASDMASAL ASD",
+    uri: "https://videos.pexels.com/video-files/5667135/5667135-uhd_1440_2732_30fps.mp4",
+  },
+  {
+    title: "ASDDASD SAD",
+    uri: "https://videos.pexels.com/video-files/5319934/5319934-uhd_2560_1440_25fps.mp4",
+  },
+  {
+    title: "DASJDSAOS",
+    uri: "https://videos.pexels.com/video-files/6944288/6944288-uhd_1440_2560_24fps.mp4",
+  },
+  {
+    title: "DASJD AASOS ASDDA W ASS 2",
+    uri: "https://videos.pexels.com/video-files/6944305/6944305-uhd_1440_2560_24fps.mp4",
+  },
+  {
+    title: "DWM KKI DSAOS U NOCE DESE",
+    uri: "https://videos.pexels.com/video-files/5752365/5752365-uhd_1440_2560_25fps.mp4",
+  },
+  {
+    title: "LORME IPSUM DOLEOWS ESDR SDSA",
+    uri: "https://videos.pexels.com/video-files/9669111/9669111-hd_1080_1920_25fps.mp4",
+  },
+];
 
 export default function HomeScreen() {
-  const video = React.useRef(null);
-  const [liked, setLiked] = React.useState(false);
-  const [isPlaying, setIsPlaying] = React.useState(false);
-  const animationRef = useRef<LottieView>(null);
-
   return (
     <SafeAreaViewDripsy style={styles.container}>
       <ViewDripsy variant="layout.mainContainer">
-        <View
-          sx={{
-            height: (Dimensions.get("window").height / 9) * 5,
-            boxShadow: "md",
-            borderRadius: 20,
-          }}
-        >
-          {!HAS_VIDEO ? (
-            <Image
-              source={{
-                uri: "https://letsenhance.io/static/73136da51c245e80edc6ccfe44888a99/1015f/MainBefore.jpg",
-              }}
-              style={styles.mediaContainer}
-            />
-          ) : (
-            <Video
-              ref={video}
-              style={styles.mediaContainer}
-              source={{
-                uri: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-              }}
-              useNativeControls={false}
-              resizeMode={ResizeMode.COVER}
-              isLooping
-              isMuted
-              shouldPlay
-            />
+        <FlashList
+          data={FAKE_DATA}
+          renderItem={({ item, index }) => (
+            <MediaCardItem key={index} uri={item.uri} title={item.title} />
           )}
-          <View style={styles.mask} />
-          <Pressable
-            onPress={() => setLiked((prev) => !prev)}
-            style={styles.likeButton}
-          >
-            {liked ? (
-              <AntDesign name="heart" size={24} color={Colors.red[5]} />
-            ) : (
-              <AntDesign name="hearto" size={24} color="white" />
-            )}
-          </Pressable>
-          <View variant="layout.mediaListItemDescription">
-            <Text variant="regular" style={styles.whiteText}>
-              Description sdjasda ashk adkas hkas ofsa sda asjdasda sd asdadnd
-              sakd sadansdksddsnk sadasd asdas
-            </Text>
-            <Text sx={{ py: "$2" }} variant="big" style={styles.whiteText}>
-              TITLE OF THE MOTIVATIONAL VIDEO 2
-            </Text>
-            <Row style={styles.bottomRow}>
-              <Row style={styles.timeBox}>
-                <Ionicons name="time-outline" size={18} color="white" />
-                <Text
-                  sx={{ ml: "$1" }}
-                  variant="regular"
-                  style={styles.whiteText}
-                >
-                  17:32
-                </Text>
-              </Row>
-              <Pressable
-                onPress={() => {
-                  // eslint-disable-next-line no-unused-expressions
-                  !isPlaying
-                    ? animationRef.current?.play()
-                    : animationRef.current?.reset();
-                  setIsPlaying((prev) => !prev);
-                }}
-              >
-                <LottieView
-                  ref={animationRef}
-                  autoPlay={false}
-                  loop
-                  style={styles.playingAnimation}
-                  source={PlayingAnimation}
-                />
-              </Pressable>
-            </Row>
-          </View>
-        </View>
+          estimatedItemSize={10}
+          ItemSeparatorComponent={() => <View sx={{ my: "$3" }} />}
+        />
       </ViewDripsy>
     </SafeAreaViewDripsy>
   );
@@ -108,30 +54,4 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  mediaContainer: {
-    width: "100%",
-    height: "100%",
-    position: "absolute",
-    overflow: "hidden",
-    borderRadius: 20,
-  },
-  mask: {
-    width: "100%",
-    height: "100%",
-    position: "absolute",
-    overflow: "hidden",
-    borderRadius: 20,
-    backgroundColor: "black",
-    opacity: 0.38,
-  },
-  whiteText: {
-    color: "white",
-  },
-  playingAnimation: {
-    width: 24,
-    height: 24,
-  },
-  bottomRow: { justifyContent: "space-between", width: "100%" },
-  timeBox: { alignItems: "center" },
-  likeButton: { position: "absolute", top: 32, right: 32, zIndex: 2 },
 });
