@@ -77,6 +77,10 @@ export const theme = makeTheme({
   },
   linearGradients: {
     sunny: [Colors.yellow[5], Colors.purple[4]],
+    purpleRain: [Colors.purple[10], Colors.purple[20], Colors.gray[11]],
+    dark: [Colors.gray[10], Colors.gray[12], Colors.gray[14]],
+    profileLight: [Colors.yellow[2], Colors.orange[3], Colors.purple[2]],
+    profileDark: [Colors.gray[14], Colors.orange[20], Colors.gray[15]],
   },
   layout: {
     mainContainer: {
