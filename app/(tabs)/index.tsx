@@ -4,7 +4,8 @@ import React from "react";
 import SafeAreaViewDripsy from "@/components/themed/SafeAreaViewDripsy";
 import { FlashList } from "@shopify/flash-list";
 import MediaCardItem from "@/components/player/MediaCardItem";
-import { View } from "dripsy";
+import { useSx, View } from "dripsy";
+import MediaSearchBar from "@/components/player/MediaSearchBar";
 
 const FAKE_DATA = [
   {
@@ -34,9 +35,12 @@ const FAKE_DATA = [
 ];
 
 export default function HomeScreen() {
+  const sx = useSx();
+
   return (
     <SafeAreaViewDripsy style={styles.container}>
       <ViewDripsy variant="layout.mainContainer">
+        <MediaSearchBar style={sx({ mb: "$3" })} />
         <FlashList
           data={FAKE_DATA}
           renderItem={({ item, index }) => (

@@ -138,6 +138,7 @@ export const ThemeColors = {
     tabIconSelected: Colors.blue[9],
     tabBarBackground: Colors.gray[2],
     orangeAccent: Colors.orange[9],
+    searchBarColor: Colors.orange[0],
   },
   dark: {
     background: Colors.gray[13],
@@ -155,5 +156,6 @@ export const ThemeColors = {
     tabIconSelected: Colors.blue[7],
     tabBarBackground: Colors.gray[12],
     orangeAccent: Colors.orange[7],
+    searchBarColor: Colors.gray[11],
   },
 };
