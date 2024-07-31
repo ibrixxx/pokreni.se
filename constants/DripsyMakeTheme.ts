@@ -50,10 +50,17 @@ export const theme = makeTheme({
       fontFamily: "AntonRegular",
       fontWeight: "condensedBold",
     },
-    regular: {
+    semiBold: {
       fontFamily: "OswaldSemiBold",
-      fontSize: "$1",
-      lineHeight: "$1",
+      fontSize: "$4",
+    },
+    regular: {
+      fontFamily: "OswaldRegular",
+      fontSize: "$2",
+    },
+    medium: {
+      fontFamily: "OswaldMedium",
+      fontSize: "$4",
     },
   },
   shadows: {
@@ -79,8 +86,10 @@ export const theme = makeTheme({
     sunny: [Colors.yellow[5], Colors.purple[4]],
     purpleRain: [Colors.purple[10], Colors.purple[20], Colors.gray[11]],
     dark: [Colors.gray[10], Colors.gray[12], Colors.gray[14]],
-    profileLight: [Colors.yellow[2], Colors.orange[3], Colors.purple[2]],
-    profileDark: [Colors.gray[14], Colors.orange[20], Colors.gray[15]],
+    profileLight: [Colors.yellow[0], Colors.orange[1], Colors.purple[0]],
+    profileDark: [Colors.gray[13], Colors.gray[10], Colors.gray[15]],
+    proButton: [Colors.yellow[1], Colors.yellow[3], Colors.gold[3]],
+    proButtonDark: [Colors.yellow[4], Colors.gold[10]],
   },
   layout: {
     mainContainer: {
