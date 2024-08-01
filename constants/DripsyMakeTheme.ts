@@ -73,6 +73,7 @@ export const theme = makeTheme({
     buttonText: {
       fontFamily: "KanitRegular",
       fontSize: "$3",
+      color: Colors.gray[0],
     },
   },
   shadows: {

@@ -11,6 +11,7 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Switch } from "react-native-paper";
+import { Link } from "expo-router";
 
 const IS_PRO = false;
 
@@ -67,52 +68,55 @@ const ProfileCard = () => {
         </Text>
 
         <View style={styles.actions}>
-          <TouchableOpacity style={styles.button}>
-            {IS_PRO ? (
-              <LinearGradient
-                colors={
-                  isDarkTheme
-                    ? theme.linearGradients.proButtonDark
-                    : theme.linearGradients.proButton
-                }
-                style={styles.gradientMask}
-              />
-            ) : (
+          <Link push href={"/paywall"} asChild>
+            <TouchableOpacity style={styles.button}>
+              {IS_PRO ? (
+                <LinearGradient
+                  colors={
+                    isDarkTheme
+                      ? theme.linearGradients.proButtonDark
+                      : theme.linearGradients.proButton
+                  }
+                  style={styles.gradientMask}
+                />
+              ) : (
+                <View style={styles.mask} />
+              )}
+              <Row style={styles.buttonText2}>
+                <MaterialCommunityIcons
+                  name="crown-circle"
+                  size={32}
+                  color={Colors.gold[14]}
+                />
+                <TextDripsy
+                  variant="text.kanitRegular"
+                  style={{
+                    marginLeft: theme.space.$1,
+                    fontSize: theme.fontSizes.$3,
+                  }}
+                >
+                  {IS_PRO ? "PRO" : "become a PRO"}
+                </TextDripsy>
+              </Row>
+            </TouchableOpacity>
+          </Link>
+          <Link push href={"/liked"} asChild>
+            <TouchableOpacity style={styles.button}>
               <View style={styles.mask} />
-            )}
-            <Row style={styles.buttonText2}>
-              <MaterialCommunityIcons
-                name="crown-circle"
-                size={32}
-                color={Colors.gold[14]}
-              />
-              <TextDripsy
-                variant="text.kanitRegular"
-                style={{
-                  marginLeft: theme.space.$1,
-                  fontSize: theme.fontSizes.$3,
-                }}
-              >
-                {IS_PRO ? "PRO" : "become a PRO"}
-              </TextDripsy>
-            </Row>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.button}>
-            <View style={styles.mask} />
-            <Row style={styles.buttonText}>
-              <AntDesign name="heart" size={24} color={Colors.red[4]} />
-              <TextDripsy
-                variant="text.kanitRegular"
-                style={{
-                  marginLeft: theme.space.$1,
-                  fontSize: theme.fontSizes.$3,
-                }}
-              >
-                liked
-              </TextDripsy>
-            </Row>
-          </TouchableOpacity>
+              <Row style={styles.buttonText}>
+                <AntDesign name="heart" size={24} color={Colors.red[4]} />
+                <TextDripsy
+                  variant="text.kanitRegular"
+                  style={{
+                    marginLeft: theme.space.$1,
+                    fontSize: theme.fontSizes.$3,
+                  }}
+                >
+                  liked
+                </TextDripsy>
+              </Row>
+            </TouchableOpacity>
+          </Link>
         </View>
 
         <Row style={styles.themeChange}>

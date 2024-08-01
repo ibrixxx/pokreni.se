@@ -1,6 +1,6 @@
 import { StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
-import { Image, useDripsyTheme, View } from "dripsy";
+import { Image, Text, useDripsyTheme, View } from "dripsy";
 import { ThemeColors } from "@/constants/Colors";
 import { useTheme } from "@/hooks/useTheme";
 import ViewDripsy from "../themed/ViewDripsy";
@@ -37,7 +37,7 @@ const EditProfileContent = () => {
       </View>
 
       <PaperButton>
-        <TextDripsy variant="text.buttonText">save</TextDripsy>
+        <Text variant="buttonText">save</Text>
       </PaperButton>
     </ViewDripsy>
   );

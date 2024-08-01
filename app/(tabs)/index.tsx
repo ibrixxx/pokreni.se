@@ -8,7 +8,7 @@ import { useSx, View } from "dripsy";
 import MediaSearchBar from "@/components/player/MediaSearchBar";
 import { useNavigation } from "expo-router";
 
-const FAKE_DATA = [
+export const FAKE_DATA = [
   {
     title: "ANE ASDNASD ASDMASAL ASD",
     uri: "https://videos.pexels.com/video-files/5667135/5667135-uhd_1440_2732_30fps.mp4",
