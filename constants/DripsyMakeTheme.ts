@@ -62,6 +62,18 @@ export const theme = makeTheme({
       fontFamily: "OswaldMedium",
       fontSize: "$4",
     },
+    kanitRegular: {
+      fontFamily: "KanitRegular",
+      fontSize: "$2",
+    },
+    kanitMedium: {
+      fontFamily: "KanitRegular",
+      fontSize: "$4",
+    },
+    buttonText: {
+      fontFamily: "KanitRegular",
+      fontSize: "$3",
+    },
   },
   shadows: {
     md: {
@@ -101,6 +113,10 @@ export const theme = makeTheme({
       p: "$4",
       flex: 1,
       justifyContent: "flex-end",
+    },
+    centerContainer: {
+      justifyContent: "center",
+      alignItems: "center",
     },
   },
 });

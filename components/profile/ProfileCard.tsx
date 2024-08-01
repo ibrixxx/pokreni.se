@@ -52,7 +52,7 @@ const ProfileCard = () => {
           style={{
             height: theme.space.$6,
             width: theme.space.$6,
-            borderRadius: theme.space.$5,
+            borderRadius: theme.space.$4,
             borderWidth: theme.space.$1,
             borderColor: ThemeColors[appTheme!].tabBarBackground,
             marginBottom: theme.space.$1,
@@ -60,7 +60,7 @@ const ProfileCard = () => {
         />
 
         <Text
-          variant="medium"
+          variant="kanitMedium"
           sx={{ color: ThemeColors[appTheme!].profileContent }}
         >
           username
@@ -87,7 +87,7 @@ const ProfileCard = () => {
                 color={Colors.gold[14]}
               />
               <TextDripsy
-                variant="text.regular"
+                variant="text.kanitRegular"
                 style={{
                   marginLeft: theme.space.$1,
                   fontSize: theme.fontSizes.$3,
@@ -103,7 +103,7 @@ const ProfileCard = () => {
             <Row style={styles.buttonText}>
               <AntDesign name="heart" size={24} color={Colors.red[4]} />
               <TextDripsy
-                variant="text.regular"
+                variant="text.kanitRegular"
                 style={{
                   marginLeft: theme.space.$1,
                   fontSize: theme.fontSizes.$3,

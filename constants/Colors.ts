@@ -205,6 +205,9 @@ export const ThemeColors = {
     orangeAccent: Colors.orange[9],
     searchBarColor: Colors.orange[0],
     profileContent: Colors.gray[8],
+    textInputBackground: Colors.orange[0],
+    textInputInactiveOutline: Colors.gray[3],
+    textInputActiveOutline: Colors.orange[12],
   },
   dark: {
     background: Colors.gray[13],
@@ -224,5 +227,8 @@ export const ThemeColors = {
     orangeAccent: Colors.orange[7],
     searchBarColor: Colors.gray[11],
     profileContent: Colors.gray[2],
+    textInputBackground: Colors.gray[10],
+    textInputInactiveOutline: Colors.gray[3],
+    textInputActiveOutline: Colors.orange[3],
   },
 };

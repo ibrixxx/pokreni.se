@@ -13,12 +13,12 @@ const DevTag = () => {
 
   return (
     <Row style={styles.container}>
-      <Entypo name="code" size={24} color={ThemeColors[appTheme!].text} />
+      <Entypo name="code" size={14} color={ThemeColors[appTheme!].text} />
       <TextDripsy
-        variant="text.regular"
         style={{
           marginLeft: theme.space.$1,
-          fontSize: theme.fontSizes.$3,
+          fontSize: theme.fontSizes.$1,
+          fontFamily: "KanitRegular",
         }}
       >
         nafakash

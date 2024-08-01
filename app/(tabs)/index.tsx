@@ -1,11 +1,12 @@
 import { StyleSheet } from "react-native";
 import ViewDripsy from "@/components/themed/ViewDripsy";
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import SafeAreaViewDripsy from "@/components/themed/SafeAreaViewDripsy";
 import { FlashList } from "@shopify/flash-list";
 import MediaCardItem from "@/components/player/MediaCardItem";
 import { useSx, View } from "dripsy";
 import MediaSearchBar from "@/components/player/MediaSearchBar";
+import { useNavigation } from "expo-router";
 
 const FAKE_DATA = [
   {
@@ -36,6 +37,13 @@ const FAKE_DATA = [
 
 export default function HomeScreen() {
   const sx = useSx();
+  const navigation = useNavigation();
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerSearchBarOptions: { placeholder: "dasd" },
+    });
+  }, [navigation]);
 
   return (
     <SafeAreaViewDripsy style={styles.container}>
