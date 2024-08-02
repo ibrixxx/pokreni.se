@@ -10,12 +10,19 @@ import PlayingAnimation from "@/assets/animations/playing-animation.json";
 
 const HAS_VIDEO = true;
 
-interface MediaCardItemProps {
+export interface MediaCardItemProps {
+  id: number;
   uri: string;
   title: string;
+  shouldPlay?: boolean;
 }
 
-const MediaCardItem = ({ uri, title }: MediaCardItemProps) => {
+const MediaCardItem = ({
+  uri,
+  title,
+  id,
+  shouldPlay = false,
+}: MediaCardItemProps) => {
   const video = React.useRef(null);
   const [liked, setLiked] = React.useState(false);
   const [isPlaying, setIsPlaying] = React.useState(false);
@@ -47,7 +54,7 @@ const MediaCardItem = ({ uri, title }: MediaCardItemProps) => {
           resizeMode={ResizeMode.COVER}
           isLooping
           isMuted
-          shouldPlay
+          shouldPlay={shouldPlay}
         />
       )}
       <View style={styles.mask} />
