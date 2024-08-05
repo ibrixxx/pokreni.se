@@ -11,8 +11,8 @@ const TextDripsy = ({ style, children, ...rest }: DripsyThemedTextProps) => {
   return (
     //@ts-ignore
     <Text
-      style={style}
       sx={(theme) => ({ color: theme.colors.$text })}
+      style={style}
       {...rest}
     >
       {children}

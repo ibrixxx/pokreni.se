@@ -5,7 +5,6 @@ import { ThemeColors } from "@/constants/Colors";
 import { useTheme } from "@/hooks/useTheme";
 import ViewDripsy from "../themed/ViewDripsy";
 import PaperTextInput from "../themed/PaperTextInput";
-import TextDripsy from "../themed/TextDripsy";
 import PaperButton from "../buttons/PaperButton";
 
 const EditProfileContent = () => {
@@ -29,7 +28,12 @@ const EditProfileContent = () => {
             marginBottom: theme.space.$1,
           }}
         />
-        <TextDripsy variant="text.kanitRegular">Change image</TextDripsy>
+        <Text
+          variant="kanitRegular"
+          style={{ color: ThemeColors[appTheme!].textSecondary }}
+        >
+          Change image
+        </Text>
       </TouchableOpacity>
 
       <View sx={{ my: "$4", width: "100%" }}>
