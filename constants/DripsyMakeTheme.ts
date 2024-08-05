@@ -38,6 +38,11 @@ export const theme = makeTheme({
     $9: 44,
     $10: 48,
   },
+  borderStyles: {
+    mainRadius: {
+      borderRadius: 20,
+    },
+  },
   text: {
     h1: {
       fontSize: "$4",

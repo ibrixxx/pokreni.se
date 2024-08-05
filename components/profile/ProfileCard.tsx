@@ -1,17 +1,17 @@
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet } from "react-native";
 import React from "react";
 import { Image, Row, Text, useDripsyTheme, View } from "dripsy";
 import { LinearGradient } from "expo-linear-gradient";
 import { BlurView } from "expo-blur";
 import { Colors, ThemeColors } from "@/constants/Colors";
 import { useTheme } from "@/hooks/useTheme";
-import TextDripsy from "@/components/themed/TextDripsy";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { Switch } from "react-native-paper";
 import { Link } from "expo-router";
+import TransparentButton from "../buttons/TransparentButton";
 
 const IS_PRO = false;
 
@@ -69,53 +69,27 @@ const ProfileCard = () => {
 
         <View style={styles.actions}>
           <Link push href={"/paywall"} asChild>
-            <TouchableOpacity style={styles.button}>
-              {IS_PRO ? (
-                <LinearGradient
-                  colors={
-                    isDarkTheme
-                      ? theme.linearGradients.proButtonDark
-                      : theme.linearGradients.proButton
-                  }
-                  style={styles.gradientMask}
-                />
-              ) : (
-                <View style={styles.mask} />
-              )}
-              <Row style={styles.buttonText2}>
+            <TransparentButton
+              text={IS_PRO ? "PRO" : "become a PRO"}
+              icon={
                 <MaterialCommunityIcons
                   name="crown-circle"
                   size={32}
                   color={Colors.gold[14]}
                 />
-                <TextDripsy
-                  variant="text.kanitRegular"
-                  style={{
-                    marginLeft: theme.space.$1,
-                    fontSize: theme.fontSizes.$3,
-                  }}
-                >
-                  {IS_PRO ? "PRO" : "become a PRO"}
-                </TextDripsy>
-              </Row>
-            </TouchableOpacity>
+              }
+              gradient={IS_PRO}
+              opacity={0.1}
+              style={styles.buttonContainer}
+            />
           </Link>
           <Link push href={"/liked"} asChild>
-            <TouchableOpacity style={styles.button}>
-              <View style={styles.mask} />
-              <Row style={styles.buttonText}>
-                <AntDesign name="heart" size={24} color={Colors.red[4]} />
-                <TextDripsy
-                  variant="text.kanitRegular"
-                  style={{
-                    marginLeft: theme.space.$1,
-                    fontSize: theme.fontSizes.$3,
-                  }}
-                >
-                  liked
-                </TextDripsy>
-              </Row>
-            </TouchableOpacity>
+            <TransparentButton
+              text="liked"
+              icon={<AntDesign name="heart" size={24} color={Colors.red[4]} />}
+              opacity={0.1}
+              style={styles.buttonContainer}
+            />
           </Link>
         </View>
 
@@ -168,29 +142,6 @@ const styles = StyleSheet.create({
     width: "100%",
     marginVertical: 24,
   },
-  button: {
-    borderRadius: 20,
-    paddingHorizontal: 20,
-    paddingVertical: 15,
-    width: "80%",
-    marginBottom: 8,
-  },
-  mask: {
-    ...StyleSheet.absoluteFillObject,
-    borderRadius: 20,
-    backgroundColor: Colors.gray[5],
-    opacity: 0.1,
-  },
-  gradientMask: {
-    ...StyleSheet.absoluteFillObject,
-    borderRadius: 20,
-    opacity: 0.5,
-  },
-  buttonText: {
-    justifyContent: "center",
-    alignItems: "flex-end",
-  },
-  buttonText2: { justifyContent: "center", alignItems: "center" },
   switch: {
     marginHorizontal: 4,
   },
@@ -202,4 +153,5 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
   },
+  buttonContainer: { width: "80%", marginBottom: 8 },
 });

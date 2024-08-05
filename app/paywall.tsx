@@ -1,17 +1,16 @@
-import { ImageBackground, StyleSheet, TouchableOpacity } from "react-native";
+import { ImageBackground, StyleSheet } from "react-native";
 import React, { useState } from "react";
-import { Row, SafeAreaView, Text, useDripsyTheme, View } from "dripsy";
+import { SafeAreaView, Text, View } from "dripsy";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Colors } from "@/constants/Colors";
 import PaperButton from "@/components/buttons/PaperButton";
-import TextDripsy from "@/components/themed/TextDripsy";
 import { BlurView } from "expo-blur";
 import { useTheme } from "@/hooks/useTheme";
 import { useNavigation } from "expo-router";
+import TransparentButton from "@/components/buttons/TransparentButton";
 
 const PaywallScreen = () => {
   const navigation = useNavigation();
-  const { theme } = useDripsyTheme();
   const { theme: appTheme } = useTheme();
   const isDarkTheme = appTheme === "dark";
   const [selected, setSelected] = useState<"yr" | "mo" | null>(null);
@@ -40,14 +39,7 @@ const PaywallScreen = () => {
           size={40}
           onPress={() => navigation.goBack()}
           color={Colors.gray[5]}
-          style={{
-            top: 12,
-            right: 24,
-            position: "absolute",
-            opacity: 0.6,
-            zIndex: 4,
-            borderRadius: 20,
-          }}
+          style={styles.closeButton}
         />
         <View
           sx={{
@@ -62,6 +54,7 @@ const PaywallScreen = () => {
               color: Colors.gold[10],
               fontFamily: "SSFaster",
               fontSize: "$10",
+              textShadow: "onImage",
             }}
           >
             PRO
@@ -69,44 +62,20 @@ const PaywallScreen = () => {
         </View>
         <View style={styles.bottomContent}>
           <View sx={{ mb: "$5", width: "100%" }}>
-            <TouchableOpacity
+            <TransparentButton
               onPress={() => setSelected("yr")}
-              style={styles.button}
-            >
-              <View
-                style={selected === "yr" ? styles.maskSelected : styles.mask}
-              />
-              <Row style={styles.buttonText}>
-                <TextDripsy
-                  variant="text.kanitRegular"
-                  style={{
-                    marginLeft: theme.space.$1,
-                    fontSize: theme.fontSizes.$3,
-                  }}
-                >
-                  19.99 $ / year
-                </TextDripsy>
-              </Row>
-            </TouchableOpacity>
-            <TouchableOpacity
+              text="19.99 $ / year"
+              selected={selected === "yr"}
+              opacity={0.5}
+              style={styles.buttonStyle}
+            />
+            <TransparentButton
               onPress={() => setSelected("mo")}
-              style={styles.button}
-            >
-              <View
-                style={selected === "mo" ? styles.maskSelected : styles.mask}
-              />
-              <Row style={styles.buttonText}>
-                <TextDripsy
-                  variant="text.kanitRegular"
-                  style={{
-                    marginLeft: theme.space.$1,
-                    fontSize: theme.fontSizes.$3,
-                  }}
-                >
-                  4.99 $ / month
-                </TextDripsy>
-              </Row>
-            </TouchableOpacity>
+              text="4.99 $ / month"
+              selected={selected === "mo"}
+              opacity={0.5}
+              style={styles.buttonStyle}
+            />
           </View>
           <PaperButton disabled={!selected} buttonColor={Colors.gold[12]}>
             <Text variant="buttonText">subscribe</Text>
@@ -120,6 +89,14 @@ const PaywallScreen = () => {
 export default PaywallScreen;
 
 const styles = StyleSheet.create({
+  closeButton: {
+    top: 12,
+    right: 24,
+    position: "absolute",
+    opacity: 0.6,
+    zIndex: 4,
+    borderRadius: 20,
+  },
   bottomContent: {
     flex: 1,
     justifyContent: "flex-end",
@@ -132,32 +109,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  button: {
-    borderRadius: 20,
-    paddingHorizontal: 20,
-    paddingVertical: 15,
-    marginBottom: 8,
-    width: "100%",
-  },
-  mask: {
-    ...StyleSheet.absoluteFillObject,
-    borderRadius: 20,
-    backgroundColor: Colors.gray[5],
-    opacity: 0.5,
-  },
-  maskSelected: {
-    ...StyleSheet.absoluteFillObject,
-    borderRadius: 20,
-    backgroundColor: Colors.gold[10],
-    opacity: 0.7,
-  },
-  gradientMask: {
-    ...StyleSheet.absoluteFillObject,
-    borderRadius: 20,
-    opacity: 0.5,
-  },
-  buttonText: {
-    justifyContent: "center",
-    alignItems: "flex-end",
-  },
+  buttonStyle: { marginBottom: 8, width: "100%" },
 });
