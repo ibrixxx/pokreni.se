@@ -1,4 +1,4 @@
-rootProject.name = 'pokreni.se'
+rootProject.name = 'pokrenise'
 
 dependencyResolutionManagement {
   versionCatalogs {

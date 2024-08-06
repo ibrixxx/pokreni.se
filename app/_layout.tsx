@@ -32,7 +32,10 @@ export default function RootLayout() {
   }, [loaded]);
 
   useEffect(() => {
-    GoogleSignin.configure();
+    GoogleSignin.configure({
+      iosClientId:
+        "1029032124337-253stm2gbdiaakid0k26tpchqd346bkn.apps.googleusercontent.com",
+    });
   }, []);
 
   if (!loaded) {

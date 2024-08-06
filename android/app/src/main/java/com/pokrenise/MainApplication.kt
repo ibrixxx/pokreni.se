@@ -1,4 +1,4 @@
-package com.ibrahimmesan.pokrenise
+package com.pokrenise
 
 import android.app.Application
 import android.content.res.Configuration
