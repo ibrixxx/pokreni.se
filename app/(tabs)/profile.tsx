@@ -6,16 +6,23 @@ import ProfileCard from "@/components/profile/ProfileCard";
 import DevTag from "@/components/profile/DevTag";
 import BottomModal from "@/components/modals/BottomModal";
 import EditProfileContent from "@/components/profile/EditProfileContent";
+import RegisterScreen from "@/components/profile/RegisterScreen";
+
+const REGISTERED = false;
 
 const ProfileScreen = () => {
   const [visible, setVisible] = useState(true);
 
   return (
     <SafeAreaViewDripsy style={styles.container}>
-      <ViewDripsy variant="layout.mainContainer">
-        <ProfileCard />
-        <DevTag />
-      </ViewDripsy>
+      {REGISTERED ? (
+        <ViewDripsy variant="layout.mainContainer">
+          <ProfileCard />
+        </ViewDripsy>
+      ) : (
+        <RegisterScreen />
+      )}
+      <DevTag />
       <BottomModal
         isVisible={visible}
         onClose={() => setVisible(false)}

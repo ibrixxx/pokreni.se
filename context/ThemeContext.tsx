@@ -5,19 +5,21 @@ import { ColorSchemeName, useColorScheme } from "react-native";
 interface ThemeContextType {
   theme: ColorSchemeName;
   setTheme: React.Dispatch<React.SetStateAction<ColorSchemeName>>;
+  isDarkTheme: boolean;
 }
 
 // Create the context with the defined type
 export const ThemeContext = React.createContext<ThemeContextType | undefined>(
-  undefined,
+  undefined
 );
 
 const ThemeContextProvider = ({ children }: { children: ReactNode }) => {
   const defaultTheme = useColorScheme();
   const [theme, setTheme] = useState<ColorSchemeName>(defaultTheme);
+  const isDarkTheme = theme === "dark";
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme, isDarkTheme }}>
       {children}
     </ThemeContext.Provider>
   );

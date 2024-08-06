@@ -110,6 +110,7 @@ export const theme = makeTheme({
     dark: [Colors.gray[10], Colors.gray[12], Colors.gray[14]],
     profileLight: [Colors.yellow[0], Colors.orange[1], Colors.purple[0]],
     profileDark: [Colors.gray[13], Colors.gray[10], Colors.gray[15]],
+    registerDark: [Colors.gray[9], Colors.gray[13], Colors.gray[15]],
     proButton: [Colors.yellow[1], Colors.yellow[3], Colors.gold[3]],
     proButtonDark: [Colors.yellow[4], Colors.gold[10]],
   },

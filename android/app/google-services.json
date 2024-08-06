@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "98273713541",
+    "project_id": "pokrenise-2e937",
+    "storage_bucket": "pokrenise-2e937.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98273713541:android:90085c6efda99487d378ec",
+        "android_client_info": {
+          "package_name": "com.ibrahimmesan.pokrenise"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJ-tkmuV0SUyRoEPrNlFOTp0s-D2zV31o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

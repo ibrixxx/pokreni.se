@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import React from "react";
-import { Image, Row, Text, useDripsyTheme, View } from "dripsy";
+import { Image, Text, useDripsyTheme, View } from "dripsy";
 import { LinearGradient } from "expo-linear-gradient";
 import { BlurView } from "expo-blur";
 import { Colors, ThemeColors } from "@/constants/Colors";
@@ -8,16 +8,15 @@ import { useTheme } from "@/hooks/useTheme";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import { Switch } from "react-native-paper";
 import { Link } from "expo-router";
 import TransparentButton from "../buttons/TransparentButton";
+import ThemeSwitch from "../helper/ThemeSwitch";
 
 const IS_PRO = false;
 
 const ProfileCard = () => {
   const { theme } = useDripsyTheme();
-  const { theme: appTheme, setTheme } = useTheme();
+  const { theme: appTheme } = useTheme();
   const isDarkTheme = appTheme === "dark";
 
   return (
@@ -37,7 +36,7 @@ const ProfileCard = () => {
         style={styles.gradient}
       />
       <BlurView
-        intensity={isDarkTheme ? 100 : 100}
+        intensity={100}
         tint={isDarkTheme ? "dark" : "light"}
         style={styles.blurContainer}
       >
@@ -93,23 +92,7 @@ const ProfileCard = () => {
           </Link>
         </View>
 
-        <Row style={styles.themeChange}>
-          {isDarkTheme ? (
-            <MaterialIcons name="dark-mode" size={24} color={Colors.gray[10]} />
-          ) : (
-            <MaterialIcons
-              name="light-mode"
-              size={24}
-              color={Colors.yellow[15]}
-            />
-          )}
-          <Switch
-            style={styles.switch}
-            color={Colors.yellow[4]}
-            value={!isDarkTheme}
-            onChange={() => setTheme(appTheme === "dark" ? "light" : "dark")}
-          />
-        </Row>
+        <ThemeSwitch style={styles.themeChange} />
       </BlurView>
     </View>
   );
@@ -141,9 +124,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     marginVertical: 24,
-  },
-  switch: {
-    marginHorizontal: 4,
   },
   themeChange: {
     position: "absolute",
