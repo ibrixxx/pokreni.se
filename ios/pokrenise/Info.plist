@@ -58,5 +58,13 @@
 		</array>
 	</dict>
 	</array>
+	<dict>
+    <key>NSMotionUsageDescription</key>
+    <string>Track fitness activity</string>
+    <key>NSHealthUpdateUsageDescription</key>
+    <string>Track fitness activity</string>
+    <key>NSHealthShareUsageDescription</key>
+    <string>Track fitness activity</string>
+</dict>
 </dict>
 </plist>

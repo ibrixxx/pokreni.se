@@ -8,7 +8,7 @@ import BottomModal from "@/components/modals/BottomModal";
 import EditProfileContent from "@/components/profile/EditProfileContent";
 import RegisterScreen from "@/components/profile/RegisterScreen";
 
-const REGISTERED = true;
+const REGISTERED = false;
 
 const ProfileScreen = () => {
   const [visible, setVisible] = useState(true);
