@@ -2,11 +2,38 @@ import ParallaxScrollView from "@/components/animated/ParallaxScrollView";
 import { ThemedView } from "@/components/themed/ThemedView";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { StyleSheet } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextDripsy from "@/components/themed/TextDripsy";
+import { Pedometer } from "expo-sensors";
 
 export default function CommunityScreen() {
-  const [steps, setSteps] = useState(0);
+  const [isPedometerAvailable, setIsPedometerAvailable] = useState("checking");
+  const [pastStepCount, setPastStepCount] = useState(0);
+  const [currentStepCount, setCurrentStepCount] = useState(0);
+
+  const subscribe = async () => {
+    const isAvailable = await Pedometer.isAvailableAsync();
+    setIsPedometerAvailable(String(isAvailable));
+
+    if (isAvailable) {
+      const end = new Date();
+      const start = new Date();
+      start.setDate(end.getDate() - 1);
+
+      const pastStepCountResult = await Pedometer.getStepCountAsync(start, end);
+      if (pastStepCountResult) {
+        setPastStepCount(pastStepCountResult.steps);
+      }
+
+      return Pedometer.watchStepCount((result) => {
+        setCurrentStepCount(result.steps);
+      });
+    }
+  };
+
+  useEffect(() => {
+    subscribe();
+  }, []);
 
   return (
     <ParallaxScrollView
@@ -16,7 +43,7 @@ export default function CommunityScreen() {
       }
     >
       <ThemedView>
-        <TextDripsy>{steps}</TextDripsy>
+        <TextDripsy>{currentStepCount}</TextDripsy>
       </ThemedView>
     </ParallaxScrollView>
   );
