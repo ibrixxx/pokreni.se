@@ -1,4 +1,4 @@
-import { ImageBackground, StyleSheet } from "react-native";
+import { ImageBackground, Platform, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView, Text, View } from "dripsy";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -16,7 +16,7 @@ const PaywallScreen = () => {
   const [selected, setSelected] = useState<"yr" | "mo" | null>(null);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={styles.container}>
       <BlurView
         intensity={70}
         tint={isDarkTheme ? "dark" : "light"}
@@ -89,6 +89,7 @@ const PaywallScreen = () => {
 export default PaywallScreen;
 
 const styles = StyleSheet.create({
+  container: { flex: 1, paddingVertical: Platform.OS === "ios" ? 0 : 42 },
   closeButton: {
     top: 12,
     right: 24,
