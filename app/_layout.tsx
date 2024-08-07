@@ -22,7 +22,7 @@ export default function RootLayout() {
     OswaldMedium: require("../assets/fonts/Oswald-Medium.ttf"),
     OswaldRegular: require("../assets/fonts/Oswald-Regular.ttf"),
     OswaldSemiBold: require("../assets/fonts/Oswald-SemiBold.ttf"),
-    SSFaster: require("../assets/fonts/SS FASTER.ttf"),
+    SSFaster: require("../assets/fonts/SS-FASTER.ttf"),
   });
 
   useEffect(() => {

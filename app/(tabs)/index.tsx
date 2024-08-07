@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import ViewDripsy from "@/components/themed/ViewDripsy";
 import React, { useLayoutEffect } from "react";
 import SafeAreaViewDripsy from "@/components/themed/SafeAreaViewDripsy";
@@ -30,5 +30,6 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: Platform.OS === "ios" ? 0 : 42,
   },
 });

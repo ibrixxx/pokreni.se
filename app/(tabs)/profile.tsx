@@ -1,4 +1,4 @@
-import { Dimensions, StyleSheet } from "react-native";
+import { Dimensions, Platform, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import SafeAreaViewDripsy from "@/components/themed/SafeAreaViewDripsy";
 import ViewDripsy from "@/components/themed/ViewDripsy";
@@ -8,7 +8,7 @@ import BottomModal from "@/components/modals/BottomModal";
 import EditProfileContent from "@/components/profile/EditProfileContent";
 import RegisterScreen from "@/components/profile/RegisterScreen";
 
-const REGISTERED = false;
+const REGISTERED = true;
 
 const ProfileScreen = () => {
   const [visible, setVisible] = useState(true);
@@ -37,5 +37,5 @@ const ProfileScreen = () => {
 export default ProfileScreen;
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: { flex: 1, paddingTop: Platform.OS === "ios" ? 0 : 42 },
 });
