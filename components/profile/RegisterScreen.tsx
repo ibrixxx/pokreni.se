@@ -77,7 +77,11 @@ const RegisterScreen = () => {
             placeholder="email"
             style={{ marginBottom: 12 }}
           />
-          <PaperTextInput label={"password"} placeholder="password" />
+          <PaperTextInput
+            label={"password"}
+            placeholder="password"
+            textContentType="password"
+          />
           <Row
             variant="layout.centerContainer"
             sx={{
